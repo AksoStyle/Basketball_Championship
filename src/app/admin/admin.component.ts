@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild, ChangeDetectorRef   } from '@angular/core';
 import { UserService } from '../services/model_services/user.service';
-import { UserChampionshipsService } from '../services/model_services/user-championships.service';
 import { ChampionshipsService } from '../services/model_services/championships.service';
 import { User } from '../models/User';
 import { Championships } from '../models/Championships';
 import { MatTableDataSource } from '@angular/material/table';
-
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
-
 import { SnackbarService } from '../shared/snackbar.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -20,8 +18,8 @@ export class AdminComponent {
 
   //Users
   displayedColumns: string[] = ['id', 'email', 'name', 'birthDate', 'Admin'];
-  dataSource = new MatTableDataSource<User>([]);
-
+  @Input() dataSource = new MatTableDataSource<User>([]);
+  
   //Championships
   displayedColumns_championships: string[] = ['id', 'name', 'date', 'delete'];
   dataSource_championships = new MatTableDataSource<Championships>([]);
@@ -31,12 +29,17 @@ export class AdminComponent {
 
   selectedDate: Date = new Date();
 
+  
+
   constructor(
     private userService: UserService,
     private championshipsService: ChampionshipsService,
     private firestore: AngularFirestore,
     private snackbarService: SnackbarService,
+    private changeDetector: ChangeDetectorRef
     ) { }
+
+   
 
   ngOnInit(): void {
     this.snackbarService.show(['Üdvözlünk Admin!'], 'green-snackbar')
@@ -50,6 +53,13 @@ export class AdminComponent {
       
     })
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['dataSource']) {
+      this.changeDetector.detectChanges();
+      console.log(this.dataSource)
+    }
+  } 
 
   async deleteChampionship(id: string) {
       try {
@@ -80,8 +90,25 @@ export class AdminComponent {
   resetChampionshipForm(form: NgForm) {
     form.resetForm();
   }
-  
+
+  filterBy(value: string){
+    if(value === 'all'){
+      this.dataSource.data = this.users;
+      console.log('All: ');
+      console.log(this.users);
+    } else if (value === 'Admin') {
+      this.userService.getAllAdmin().subscribe((users: User[]) => {
+        this.dataSource.data = users;
+        console.log('Admin: ');
+        console.log(this.users);
+      })
+      
+
+    }
+  }
   
 
   
+  
+ 
 }

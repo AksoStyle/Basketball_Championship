@@ -1,6 +1,12 @@
 <mat-card>
     <mat-card-title>Felhasználók</mat-card-title>
+    
     <mat-card-content>
+        <button mat-button [matMenuTriggerFor]="menu">Szűrés</button>
+        <mat-menu #menu="matMenu" xPosition="before" >
+            <button mat-menu-item (click)="filterBy('all')">All</button>
+            <button  mat-menu-item (click)="filterBy('Admin')">Admin</button>
+          </mat-menu>
         <table mat-table [dataSource]="users">
 
             <ng-container matColumnDef="id">

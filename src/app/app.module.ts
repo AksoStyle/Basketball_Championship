@@ -38,7 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 //Firebase
@@ -100,6 +100,7 @@ import { TimestampToDatePipe } from './shared/timestamp-to-date.pipe';
     MatTableModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),

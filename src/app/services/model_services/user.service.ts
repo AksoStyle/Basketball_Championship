@@ -31,4 +31,8 @@ export class UserService {
     return this.asf.collection<User>(this.collectionName).doc(id).delete();
   }
 
+  getAllAdmin() {
+    return this.asf.collection<User>(this.collectionName, ref => ref.where('Admin', '==', true)).valueChanges();
+  }
+
 }
