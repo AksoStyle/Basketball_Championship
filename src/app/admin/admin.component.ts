@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
 import { SnackbarService } from '../shared/snackbar.service';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AdminComponent {
 
   //Users
   displayedColumns: string[] = ['id', 'email', 'name', 'birthDate', 'Admin'];
-  @Input() dataSource = new MatTableDataSource<User>([]);
+  dataSource = new MatTableDataSource<User>([]);
   
   //Championships
   displayedColumns_championships: string[] = ['id', 'name', 'date', 'delete'];
@@ -93,14 +94,16 @@ export class AdminComponent {
 
   filterBy(value: string){
     if(value === 'all'){
-      this.dataSource.data = this.users;
-      console.log('All: ');
-      console.log(this.users);
+      this.userService.getAll().subscribe(users => {
+        this.users = users;
+      })
+       
+      console.log('All: ', this.users);
     } else if (value === 'Admin') {
       this.userService.getAllAdmin().subscribe((users: User[]) => {
-        this.dataSource.data = users;
-        console.log('Admin: ');
-        console.log(this.users);
+        console.log('Getadmins:, ', users)
+        this.users = users;
+        console.log('Admin: ', this.dataSource.data);
       })
       
 
