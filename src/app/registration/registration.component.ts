@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { DatePipe } from '@angular/common';
 import { User } from '../models/User';
 import { UserService } from '../services/model_services/user.service';
 import { SnackbarService } from '../shared/snackbar.service';
@@ -23,7 +22,6 @@ export class RegistrationComponent {
   })
 
   constructor(
-    private datePipe: DatePipe,
     private router: Router,
     private authService: AuthService,
     private userService: UserService,
@@ -75,7 +73,7 @@ export class RegistrationComponent {
               Admin: false
             }
             this.userService.create(user).catch(error => {
-              console.error('geci kecs:' + error);
+              console.error('kecs:' + error);
             })
 
             if (response) {
@@ -94,14 +92,8 @@ export class RegistrationComponent {
               errorMessages.push('Az email már használatban van.');
             } else if (err.code === 'auth/network-request-failed') {
               errorMessages.push('Hálózati hiba történt, kérlek ellenőrizd az internetkapcsolatodat.');
-            } else if (err.code === 'auth/too-many-requests') {
-              errorMessages.push('Túl sok sikertelen bejelentkezési kísérlet történt, kérlek próbálkozz később.');
-            } else if (err.code === 'auth/user-disabled') {
-              errorMessages.push('A fiók letiltva, kérlek lépj kapcsolatba az ügyfélszolgálattal.');
-            } else if (err.code === 'auth/user-not-found') {
+            }   else if (err.code === 'auth/user-not-found') {
               errorMessages.push('Nincs felhasználó ezzel az email címmel. Kérlek ellenőrizd, hogy helyes email címet adtál meg, vagy regisztrálj egy új fiókot.');
-            } else if (err.code === 'auth/wrong-password') {
-              errorMessages.push('Helytelen jelszó, kérlek próbálkozz újra.');
             } else {
               errorMessages.push('A regisztráció sikertelen!');
             }

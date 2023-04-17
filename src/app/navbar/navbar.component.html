@@ -21,7 +21,7 @@
     <button *ngIf="loggedInUser" mat-menu-item routerLink="/schedule" routerLinkActive="active-link">
       Bajnokságok
     </button>
-    <button *ngIf="admin === true" mat-menu-item routerLink="/admin" routerLinkActive="active-link">
+    <button *ngIf="(isAdmin$ | async)" mat-menu-item routerLink="/admin" routerLinkActive="active-link">
       Adminiszrátor
     </button>
   </mat-menu>
@@ -32,7 +32,8 @@
     <button *ngIf="loggedInUser" mat-button routerLink="/login" routerLinkActive="active-link" (click)="logout()">Kijelentkezés</button>
   </div>
   <div class="prof">
-    <button *ngIf="loggedInUser" mat-menu-item routerLink="/profile" routerLinkActive="active-link">
+    <button *ngIf="loggedInUser && !(isAdmin$ | async)" mat-menu-item routerLink="/profile" routerLinkActive="active-link">
+
       <mat-icon style="color: white;">account_circle</mat-icon>
 
     </button>

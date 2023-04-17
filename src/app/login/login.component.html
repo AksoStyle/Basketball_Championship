@@ -13,15 +13,17 @@
             alt="login-image">
         </div>
         <div class="input-container">
+          <form [formGroup]="loginForm">
           <mat-form-field appearance="fill">
             <mat-label>E-mail cím</mat-label>
-            <input matInput placeholder="E-mail cím" [formControl]="email">
+            <input matInput placeholder="E-mail cím" formControlName="email">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Jelszó</mat-label>
-            <input matInput placeholder="Jelszó" type="password" [formControl]="password">
+            <input matInput placeholder="Jelszó" type="password" formControlName="password">
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="login()">Bejelentkezés</button>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">Bejelentkezés</button>
+        </form>
         </div>
       </div>
     </mat-card-content>

@@ -91,7 +91,7 @@
           <input matInput placeholder="Név" name="name" ngModel required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Dátum" name="date" [(ngModel)]="selectedDate" required>
+            <input matInput [matDatepicker]="picker" placeholder="{{ minDate | date: 'yyyy-mm-dd'}}" name="date" [(ngModel)]="selectedDate" required [min]="minDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>

@@ -15,16 +15,26 @@ export class NavbarComponent {
   options: string[] = [];
   loggedInUser?: firebase.default.User | null;
   admin: boolean = false;
+  isAdmin$: Observable<boolean>;
+  
 
-  constructor(private authService: AuthService,private userService: UserService,private snackbarService: SnackbarService, private router: Router) {}
+  constructor(private authService: AuthService,private userService: UserService,private snackbarService: SnackbarService, private router: Router) {
+    this.isAdmin$ = this.userService.getAllAdmin().pipe(
+      map(users => {
+        const currentUserId = this.loggedInUser?.uid;
+        const currentUserIsAdmin = users.some(user => user.id === currentUserId && user.Admin);
+        return currentUserIsAdmin;
+      })
+    );
+  }
 
   ngOnInit() {
+    if(this.isAdmin()) {this.admin = true;}
+    
     this.authService.isUserLoggedIn().subscribe(user => {
       this.loggedInUser = user;
       localStorage.setItem('user', JSON.stringify(this.loggedInUser));
-      this.isAdmin().subscribe(result => {
-        if (result) {this.admin = true;}
-      });
+      
     }, error => {
       this.snackbarService.show(['Ismeretlen hiba lépett fel.'], 'red-snackbar');
       localStorage.setItem('user', JSON.stringify(null));
@@ -42,14 +52,14 @@ export class NavbarComponent {
   }
 
   isAdmin(): Observable<boolean> {
-    return this.userService.getAll().pipe(
-      map((user: User[]) => {
-        for (let us of user) {
-          if (this.loggedInUser?.displayName === us.name && us.Admin) {return true;}
-        }
-        return false;
+    return this.userService.getAllAdmin().pipe(
+      map(users => {
+        const currentUserId = this.loggedInUser?.uid;
+        const currentUserIsAdmin = users.some(user => user.id === currentUserId && user.Admin);
+        return currentUserIsAdmin;
       })
     );
   }
+  
 
 }

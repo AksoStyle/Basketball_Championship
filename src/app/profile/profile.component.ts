@@ -131,12 +131,14 @@ export class ProfileComponent {
         await this.auth.signInWithEmailAndPassword(`${user.uid}@deleted.com`, `${user.uid}deleted`);
         await this.auth.currentUser.then((user) => {
           return user?.delete();
+          
         });
-        await this.router.navigate(['/home']);
+        
       }
     } catch (error) {
       console.error(error);
     }
+    this.router.navigate(['/home']);
   }
 
   unsubscribe(championshipId: string) {
