@@ -1,0 +1,75 @@
+<h2>Felhasználói felület</h2>
+<div id="wrapper">
+  <mat-card id="first">
+    <mat-card-header>
+      <div class="card-header-info">
+        <mat-card-title>Személyes adatok</mat-card-title>
+      </div>
+
+
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-avatar">
+        <img src="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fnba.png" alt=" picture">
+      </div>
+      <form [formGroup]="ProfileForm" (ngSubmit)="onSubmit()">
+
+        <div class="input-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Név</mat-label>
+            <input matInput placeholder="Teljes név" name="name" formControlName="name" value="{{name}}">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email cím</mat-label>
+            <input matInput placeholder="Email cím" name="email" formControlName="email" value="{{email}}" email>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Születési dátum</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Születési dátum" name="date" formControlName="date"
+              value="{{date }}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Mentés</button>
+
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="second">
+    <mat-card-header>
+      <div class="card-header-info">
+        <mat-card-title>Bajnokságok</mat-card-title>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-info">
+        <mat-card *ngFor="let usercs of userChampionships" id="lesser-mat-card">
+          <mat-card-header>
+            <mat-card-title>{{usercs.name}}</mat-card-title>
+          </mat-card-header>
+          <p><strong>Kezdési időpont: </strong>{{usercs.date.toDate() | date:'yyyy-MM-dd'}}</p>
+          <button *ngIf="usercs.date.toDate()  > currentDate" mat-raised-button (click)="unsubscribe(usercs.championship_id)">Lejelentkezés</button>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<button mat-raised-button color="warn" class="deletebutton" (click)="confirmDelete()">Fiók törlése</button>
+
+<mat-card *ngIf="modalVisible" class="delete">
+  <div class="modal">
+    <h2>Biztosan törölni szeretnéd a fiókodat?</h2>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="deleteAccount()">Igen</button>
+      <button mat-raised-button (click)="modalVisible = false">Nem</button>
+    </div>
+  </div>
+</mat-card>

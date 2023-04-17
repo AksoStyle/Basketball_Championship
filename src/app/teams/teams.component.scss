@@ -1,0 +1,90 @@
+h2 {
+    text-align: center;
+    font-size: 3em;
+    margin-top: 1em;
+  }
+  
+  mat-card {
+    width: 100%;
+    max-width: 35rem;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: max-width 0.3s ease-out;
+
+    &:hover {
+        max-width: 40rem;
+        cursor: pointer;
+      }
+  
+    .card-avatar {
+      width: 150px;
+      margin-right: 1em;
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+
+      
+    }
+  
+    .card-header-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+    }
+  
+    p {
+      text-align: right;
+    }
+  
+    // Tablet felületre
+    @media screen and (max-width: 768px) {
+      max-width: 80%;
+      margin: 3% auto;
+      flex-direction: row;
+  
+      .card-avatar {
+        margin-right: 1em;
+      }
+  
+      .card-header-info {
+        margin-right: 1em;
+      }
+    }
+  
+    // Mobilos felületre
+    @media screen and (max-width: 480px) {
+      max-width: 80%;
+      margin: 2% auto;
+  
+      .card-avatar {
+        width: 100px;
+        margin-right: 0.5em;
+      }
+  
+      .card-header-info {
+        margin-bottom: 0.5em;
+      }
+  
+      .card-info {
+        align-items: flex-start;
+      }
+  
+      p {
+        text-align: left;
+      }
+    }
+  }
+  

@@ -1,0 +1,21 @@
+
+<mat-card >
+  <mat-card-header>
+    <div class="card-avatar">
+      <!--<img src="{{ player.Picture }}" alt="{{ player.Name }} picture">-->
+    </div>
+    <div class="card-header-info">
+      <mat-card-title>{{ data.championship.name }}</mat-card-title>
+      <mat-card-subtitle>Kezdési időpont: {{ data.championship.date.toDate() }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-info">
+      <p>Biztosan szeretne jelentkezni a bajnokságra? <p>
+        <div mat-dialog-actions>
+            <button mat-button (click)="onNoClick()">Nem</button>
+            <button mat-button (click)="onYesClick()" cdkFocusInitial>Igen</button>
+          </div>
+    </div>
+  </mat-card-content>
+</mat-card>

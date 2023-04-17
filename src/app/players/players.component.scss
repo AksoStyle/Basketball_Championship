@@ -1,0 +1,46 @@
+h2{
+    text-align: center;
+    font-size: 3em;
+    margin-top: 1em;
+}
+
+mat-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .card-avatar {
+    width: 150px;
+    margin-right: 1em;
+    }
+    
+    img {
+    
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    }
+    
+    .card-header-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+    
+    .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    }
+    
+    p {
+    text-align: right;
+    }
+    }
+    
+    

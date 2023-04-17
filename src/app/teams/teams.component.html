@@ -1,0 +1,18 @@
+<h2>Teams:</h2>
+
+<mat-card *ngFor="let team of teams" (click)="openModal(team)">
+  <mat-card-header>
+    <mat-card-title>{{ team.Name }}</mat-card-title>
+    <mat-card-subtitle>Head Coach: {{ team.Head_Coach }}</mat-card-subtitle>
+    <div class="card-avatar">
+      <img src="{{ team.Picture }}" alt="{{ team.Name }} picture">
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="card-info">
+      <p><strong>Founded:</strong> {{ team.Founded }}</p>
+      <p><strong>Founder:</strong> {{ team.Founder }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

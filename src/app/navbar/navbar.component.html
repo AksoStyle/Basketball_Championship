@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Open navigation menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+      Főoldal
+    </button>
+    <button *ngIf="loggedInUser" mat-menu-item routerLink="/teams" routerLinkActive="active-link">
+      Csapatok
+    </button>
+    <button *ngIf="loggedInUser" mat-menu-item routerLink="/players" routerLinkActive="active-link">
+      Játékosok
+    </button>
+    <button mat-menu-item routerLink="/news" routerLinkActive="active-link">
+      Hírek
+    </button>
+    <button *ngIf="loggedInUser" mat-menu-item routerLink="/standings" routerLinkActive="active-link">
+      Állások
+    </button>
+    <button *ngIf="loggedInUser" mat-menu-item routerLink="/schedule" routerLinkActive="active-link">
+      Bajnokságok
+    </button>
+    <button *ngIf="admin === true" mat-menu-item routerLink="/admin" routerLinkActive="active-link">
+      Adminiszrátor
+    </button>
+  </mat-menu>
+  <span class="logo">Kosárlabda bajnokság</span>
+  <div class="right-side">
+    <button *ngIf="!(loggedInUser)" mat-button routerLink="/registration" routerLinkActive="active-link">Regisztráció</button>
+    <button *ngIf="!(loggedInUser)" mat-button routerLink="/login" routerLinkActive="active-link">Bejelentkezés</button>
+    <button *ngIf="loggedInUser" mat-button routerLink="/login" routerLinkActive="active-link" (click)="logout()">Kijelentkezés</button>
+  </div>
+  <div class="prof">
+    <button *ngIf="loggedInUser" mat-menu-item routerLink="/profile" routerLinkActive="active-link">
+      <mat-icon style="color: white;">account_circle</mat-icon>
+
+    </button>
+  </div>
+</mat-toolbar>

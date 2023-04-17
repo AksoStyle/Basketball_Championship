@@ -1,0 +1,14 @@
+<h2>Bajnokságok</h2>
+<mat-card >
+    <mat-card-title>Az alábbi bajnokságok érhetők el:</mat-card-title>
+    <mat-card-content>
+        <div class="card-info">
+            <mat-card *ngFor="let champ of championships" (click)="openConfirmationDialog(champ)" >
+              <mat-card-header>
+                <mat-card-title>{{champ.name}}</mat-card-title>
+              </mat-card-header>
+              <p><strong>Kezdési időpont: </strong>{{champ.date | timestampToDate | date:'yyyy-MM-dd'}}</p>
+            </mat-card>
+          </div>
+    </mat-card-content>
+</mat-card>

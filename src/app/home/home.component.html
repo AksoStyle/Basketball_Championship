@@ -1,0 +1,21 @@
+<div class="container">
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Üdvözöllek a Kosárlabda Bajnokság oldalán!
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://ca-times.brightspotcdn.com/dims4/default/7ce5d2e/2147483647/strip/true/crop/4735x3262+0+0/resize/1200x827!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fa0%2Fe3%2F363d7f674bc08b33ae5b9fa1768d%2F1191186-sp-0926-lakers-media-day-cmh-14.jpg">
+    <mat-card-content>
+      <p>Itt találsz minden fontos információt a kosárlabda bajnoksággal kapcsolatban.</p>
+      <p>Nézd meg a csapatokat, játékosokat, híreket, állásokat és a jövőbeli játékokat.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="loggedInUser" mat-raised-button color="primary" routerLink="/teams">Csapatok</button>
+      <button *ngIf="loggedInUser" mat-raised-button color="primary" routerLink="/players">Játékosok</button>
+      <button  mat-raised-button color="primary" routerLink="/news">Hírek</button>
+      <button *ngIf="loggedInUser" mat-raised-button color="primary" routerLink="/standings">Állások</button>
+      <button *ngIf="loggedInUser" mat-raised-button color="primary" routerLink="/schedule">Bajnokságok</button>    
+    </mat-card-actions>
+  </mat-card>
+</div>

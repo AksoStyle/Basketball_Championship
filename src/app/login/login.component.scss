@@ -1,0 +1,66 @@
+.content {
+    margin-top: 10rem;
+  
+    @media only screen and (max-width: 768px) {
+      margin-top: 2rem;
+    }
+  }
+  
+  mat-card {
+    max-width: 80rem;
+    margin: 0 auto;
+    text-align: center;
+
+    mat-card-title {
+      margin: 1em 0 1em 0;
+      text-align: center;
+      font-size: 2em;
+    }
+  
+    @media only screen and ((max-width: 768px) or  (max-width: 480px)) {
+      max-width: 90%;
+      mat-card{
+        mat-card-title{
+          font-size: 0.5em;
+        }
+      }
+    }
+  
+    .login-container {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+  
+      @media only screen and (min-width: 768px) {
+        flex-direction: row;
+      }
+  
+      .image-container {
+        flex-basis: 40%;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+  
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+  
+      .input-container {
+        flex-basis: 60%;
+        margin-bottom: 2rem;
+  
+        mat-form-field {
+          width: 100%;
+        }
+  
+        button {
+          margin-top: 1rem;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+  

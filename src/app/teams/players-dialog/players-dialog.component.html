@@ -1,0 +1,18 @@
+<h2>Players:</h2>
+<mat-card *ngFor="let player of players">
+  <mat-card-header>
+    <div class="card-avatar">
+      <img src="{{ player.Picture }}" alt="{{ player.Name }} picture">
+    </div>
+    <div class="card-header-info">
+      <mat-card-title>{{ player.Name }}</mat-card-title>
+      <mat-card-subtitle>Age: {{ player.Age }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-info">
+      <p><strong>Position:</strong> {{ player.Position }}</p>
+      <p><strong>Current team:</strong> {{ player.currentTeam }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

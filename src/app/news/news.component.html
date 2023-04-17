@@ -1,0 +1,16 @@
+<div class="news-container">
+    <h1>NBA hírek</h1>
+    <mat-card *ngFor="let news of news">
+      <img src="{{news.Picture}}" />
+      <mat-card-header>
+        <mat-card-title>{{news.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+            {{news.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    
+  </div>
+  

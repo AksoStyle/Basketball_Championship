@@ -1,0 +1,29 @@
+<div class="content">
+  <mat-card>
+
+    <mat-card-title>
+      Bejelentkezés
+    </mat-card-title>
+
+    <mat-card-content>
+      <div class="login-container">
+        <div class="image-container">
+          <img
+            src="https://media.newyorker.com/photos/5ddd58812ebfed0009e3080a/1:1/w_1950,h_1950,c_limit/Thomas-LukaDoncic-1.jpg"
+            alt="login-image">
+        </div>
+        <div class="input-container">
+          <mat-form-field appearance="fill">
+            <mat-label>E-mail cím</mat-label>
+            <input matInput placeholder="E-mail cím" [formControl]="email">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Jelszó</mat-label>
+            <input matInput placeholder="Jelszó" type="password" [formControl]="password">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="login()">Bejelentkezés</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "basketball-championship-2023": {
+      "hosting": {
+        "basketball_championship": [
+          "basketball-championship-2023"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "basketball-championship-2023"
+  }
+}

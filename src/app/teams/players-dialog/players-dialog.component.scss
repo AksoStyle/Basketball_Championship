@@ -1,0 +1,40 @@
+mat-card {
+    width: 25em;
+    max-width: 25em;
+    margin: 5px;
+    display: inline-block;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    mat-card {
+      width: calc(50% - 10px);
+      max-width: 100%;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    mat-card {
+      width: calc(100% - 10px);
+    }
+  }
+  
+  .card-avatar {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .card-header-info {
+    padding: 0 8px;
+  }
+  
+  .card-info {
+    padding: 0 8px;
+  }
+  

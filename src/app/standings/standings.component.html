@@ -1,0 +1,10 @@
+<mat-card *ngFor="let games of games" style="text-align: center;">
+    <mat-card-header >
+        <mat-card-title >{{ games.team1_name }} VS {{ games.team2_name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+            <img mat-card-image class="img-left" src="{{ games.picture_1 }}" alt="Team 1">
+            <img mat-card-image class="img-right" src="{{ games.picture_2 }}" alt="Team 2">
+            <p class="score">{{ games.score_1 }} - {{ games.score_2 }}</p>
+    </mat-card-content>
+  </mat-card>

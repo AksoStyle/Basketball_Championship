@@ -1,0 +1,52 @@
+<div class="content">
+    
+  <mat-card>
+    
+      <mat-card-title>Regisztráció</mat-card-title>
+    
+
+    <mat-card-content>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="registration-container">
+          <div class="image-container">
+            <img src="https://static01.nyt.com/images/2021/08/10/sports/10nba-giannis1-print/merlin_190861293_25306169-ccfc-4e7b-b09f-042fd8218ae1-mediumSquareAt3X.jpg" alt="registration-image">
+          </div>
+
+          <div class="input-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Név</mat-label>
+              <input matInput placeholder="Teljes név" name="name" formControlName="name" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email cím</mat-label>
+              <input matInput placeholder="Email cím" name="email" formControlName="email" required email>
+              <mat-error *ngIf="email?.errors?.['required']">E-mailt kötelező megadni!</mat-error>
+              <mat-error *ngIf="email?.errors?.['email']">Nem megfelelő email formátum!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Születési dátum</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="Születési dátum" name="date" formControlName="date" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+
+            <mat-form-field appearance="fill">
+              <mat-label>Jelszó</mat-label>
+              <input matInput placeholder="Jelszó" type="password" name="password" formControlName="password" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Jelszó újra</mat-label>
+              <input matInput placeholder="Jelszó újra" type="password" name="rePassword" formControlName="rePassword" required>
+              
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="signUpForm.invalid || !arePasswordsEqual" type="submit" (click)="onSubmit()">Regisztráció</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
