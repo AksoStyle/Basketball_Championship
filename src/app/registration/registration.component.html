@@ -43,7 +43,7 @@
               <input matInput placeholder="Jelszó újra" type="password" name="rePassword" formControlName="rePassword" required>
               
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="signUpForm.invalid || !arePasswordsEqual" type="submit" (click)="onSubmit()">Regisztráció</button>
+            <button mat-raised-button color="primary" [disabled]="signUpForm.invalid || !arePasswordsEqual" type="submit">Regisztráció</button>
           </div>
         </div>
       </form>

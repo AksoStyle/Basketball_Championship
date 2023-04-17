@@ -84,6 +84,7 @@ export class RegistrationComponent {
 
             }
           }).catch(err => {
+            console.error('Ez egy error', err)
             const errorMessages = [];
             if (err.code === 'auth/invalid-email') {
               errorMessages.push('Nem érvényes e-mail cím!');
