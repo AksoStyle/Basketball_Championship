@@ -18,7 +18,8 @@ export class AdminComponent {
 
   //Users
   displayedColumns: string[] = ['id', 'email', 'name', 'birthDate', 'Admin'];
-  @Input() dataSource = new MatTableDataSource<User>([]);
+  @Input() 
+  dataSource = new MatTableDataSource<User>([]);
   
   //Championships
   displayedColumns_championships: string[] = ['id', 'name', 'date', 'delete'];
@@ -42,6 +43,7 @@ export class AdminComponent {
    
 
   ngOnInit(): void {
+    console.log('ngOnInit lefutott');
     this.snackbarService.show(['Üdvözlünk Admin!'], 'green-snackbar')
     this.userService.getAll().subscribe((users: User[]) => {
       this.users = users;
@@ -55,6 +57,7 @@ export class AdminComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges lefutott');
     if (changes['dataSource']) {
       this.changeDetector.detectChanges();
       console.log(this.dataSource)
